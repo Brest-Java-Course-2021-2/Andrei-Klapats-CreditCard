@@ -11,10 +11,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>dao</module>
         <module>model</module>
         <module>dao-api</module>
+        <module>dao</module>
         <module>web-app</module>
+        <module>test-db</module>
     </modules>
 
     <properties>
@@ -23,6 +24,8 @@
         <junit.version>5.4.0</junit.version>
         <spring.version>5.3.12</spring.version>
         <thymeleaf-spring5.version>3.0.12.RELEASE</thymeleaf-spring5.version>
+        <h2.version>1.4.200</h2.version>
+        <log4j-core.version>2.14.1</log4j-core.version>
     </properties>
 
     <dependencyManagement>
@@ -39,6 +42,11 @@
             </dependency>
             <dependency>
                 <groupId>com.epam.brest</groupId>
+                <artifactId>test-db</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.brest</groupId>
                 <artifactId>dao-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -51,6 +59,16 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
             </dependency>
 
@@ -84,6 +102,25 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j-core.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -103,6 +140,16 @@
                             <port>8070</port>
                         </httpConnector>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
                 </plugin>
             </plugins>
         </pluginManagement>

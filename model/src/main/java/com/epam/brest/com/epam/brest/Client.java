@@ -5,7 +5,26 @@ public class Client {
     private String firstName;
     private String lastName;
     private String passportNumber;
-    private Integer accountId;
+
+
+    public Client() {
+    }
+
+    public Client(Integer clientId, String firstName, String lastName, String passportNumber) {
+        this.clientId = clientId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passportNumber = passportNumber;
+
+    }
+
+
+    public Client(String firstName, String lastName, String passportNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passportNumber = passportNumber;
+
+    }
 
     public Integer getClientId() {
         return clientId;
@@ -39,11 +58,7 @@ public class Client {
         this.passportNumber = passportNumber;
     }
 
-    public Integer getAccountId() {
-        return accountId;
-    }
 
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
-    }
+
+
 }

@@ -2,8 +2,9 @@ package com.epam.brest.com.epam.brest;
 
 public class Account {
     private Integer accountId;
-    private String accountDate;
+    private String accountData;
     private Integer accountBalance;
+    private Integer clientID;
 
     public Integer getAccountId() {
         return accountId;
@@ -13,13 +14,6 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public String getAccountDate() {
-        return accountDate;
-    }
-
-    public void setAccountDate(String accountDate) {
-        this.accountDate = accountDate;
-    }
 
     public Integer getAccountBalance() {
         return accountBalance;
@@ -27,5 +21,21 @@ public class Account {
 
     public void setAccountBalance(Integer accountBalance) {
         this.accountBalance = accountBalance;
+    }
+
+    public String getAccountData() {
+        return accountData;
+    }
+
+    public void setAccountData(String accountData) {
+        this.accountData = accountData;
+    }
+
+    public Integer getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(Integer clientID) {
+        this.clientID = clientID;
     }
 }
