@@ -9,13 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web-app</artifactId>
+    <artifactId>service</artifactId>
 
-    <description>Spring MVC Web application</description>
-    <packaging>war</packaging>
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>com.epam.brest</groupId>
             <artifactId>model</artifactId>
@@ -34,42 +35,12 @@
         </dependency>
         <dependency>
             <groupId>com.epam.brest</groupId>
-            <artifactId>service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.brest</groupId>
             <artifactId>test-db</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-        </dependency>
-
-<!--        test-->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
         </dependency>
 
         <dependency>
@@ -87,20 +58,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <plugins>
-            <!-- Embedded Jetty HTTP Server for testing web application -->
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

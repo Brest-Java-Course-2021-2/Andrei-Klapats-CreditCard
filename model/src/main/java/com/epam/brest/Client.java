@@ -1,4 +1,4 @@
-package com.epam.brest.com.epam.brest;
+package com.epam.brest;
 
 public class Client {
     private Integer clientId;

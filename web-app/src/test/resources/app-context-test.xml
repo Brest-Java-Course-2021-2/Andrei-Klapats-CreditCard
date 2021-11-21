@@ -24,27 +24,27 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <bean id="departmentDtoDao" class="com.epam.brest.dao.DepartmentDtoDaoJdbc">
+    <bean id="clientDtoDao" class="com.epam.brest.ClientDtoDaoJDBC">
         <constructor-arg ref="namedParameterJdbcTemplate"/>
     </bean>
 
-    <bean id="departmentDtoService" class="com.epam.brest.service.impl.DepartmentDtoServiceImpl">
-        <constructor-arg name="departmentDtoDao" ref="departmentDtoDao"/>
+    <bean id="clientDtoService" class="com.epam.brest.ClientDtoServiceImpl">
+        <constructor-arg name="clientDtoDao" ref="clientDtoDao"/>
     </bean>
 
-    <bean id="departmentDao" class="com.epam.brest.dao.DepartmentDaoJDBCImpl">
+    <bean id="clientDao" class="com.epam.brest.ClientDAOJDBCImpl">
         <constructor-arg ref="namedParameterJdbcTemplate"/>
     </bean>
 
-    <bean id="departmentService" class="com.epam.brest.service.impl.DepartmentServiceImpl">
-        <constructor-arg name="departmentDao" ref="departmentDao"/>
+    <bean id="clientService" class="com.epam.brest.ClientServiceImpl">
+        <constructor-arg name="clientDao" ref="clientDao"/>
     </bean>
 
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath*:test-db.properties</value>
-                <value>classpath*:sql-department.properties</value>
+                <value>classpath*:sql-client.properties</value>
             </list>
         </property>
     </bean>
