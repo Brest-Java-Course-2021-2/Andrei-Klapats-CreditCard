@@ -10,27 +10,19 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"classpath*:test-db.xml", "classpath*:test-jdbc-conf.xml"})
 @Transactional
 @Rollback
-class ClientDAOJDBCImplTest {
-
-    private final Logger logger = LogManager.getLogger(ClientDAOJDBCImplTest.class);
+public class ClientDAOJDBCImplIT {
+    private final Logger logger = LogManager.getLogger(ClientDAOJDBCImplIT.class);
 
     private ClientDAOJDBCImpl clientDAOJDBC;
 
-    public ClientDAOJDBCImplTest(@Autowired ClientDAO clientDAOJDBC) {
+    public ClientDAOJDBCImplIT(@Autowired ClientDAO clientDAOJDBC) {
         this.clientDAOJDBC = (ClientDAOJDBCImpl) clientDAOJDBC;
     }
 
@@ -53,4 +45,5 @@ class ClientDAOJDBCImplTest {
     @Test
     void delete() {
     }
+
 }

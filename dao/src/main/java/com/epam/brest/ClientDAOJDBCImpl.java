@@ -1,5 +1,6 @@
 package com.epam.brest;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,8 +18,8 @@ import java.util.List;
 
 @Component
 public class ClientDAOJDBCImpl implements ClientDAO {
-
     private final Logger LOGGER = LogManager.getLogger(ClientDAOJDBCImpl.class);
+
 
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -124,5 +125,9 @@ public class ClientDAOJDBCImpl implements ClientDAO {
             client.setPassportNumber(resultSet.getString("passport"));
             return client;
         }
+
+
     }
+
+
 }

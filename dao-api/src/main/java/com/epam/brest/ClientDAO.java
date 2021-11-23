@@ -1,6 +1,5 @@
 package com.epam.brest;
 
-
 import java.util.List;
 
 public interface ClientDAO {
@@ -10,4 +9,5 @@ public interface ClientDAO {
     Integer update(Client client);
     Integer delete (Integer clientId);
     Integer count();
+
 }

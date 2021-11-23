@@ -17,6 +17,7 @@
         <module>service</module>
         <module>web-app</module>
         <module>test-db</module>
+
     </modules>
 
     <properties>

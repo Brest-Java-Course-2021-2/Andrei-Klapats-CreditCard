@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS client;
 CREATE TABLE client
 (
     client_id int NOT NULL auto_increment,
-    firstname varchar(50) NOT NULL
+    firstname varchar(50) NOT NULL,
     lastname varchar(50) NOT NULL,
     passport varchar(50) NOT NULL UNIQUE,
     CONSTRAINT client_pk PRIMARY KEY (client_id)
