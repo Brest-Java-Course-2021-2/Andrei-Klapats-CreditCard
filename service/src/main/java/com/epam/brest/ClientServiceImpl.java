@@ -41,6 +41,7 @@ public class ClientServiceImpl implements ClientService{
     @Override
     @Transactional(readOnly = true)
     public Integer count() {
-        return null;
+        logger.debug("count()");
+        return this.clientDAO.count();
     }
 }

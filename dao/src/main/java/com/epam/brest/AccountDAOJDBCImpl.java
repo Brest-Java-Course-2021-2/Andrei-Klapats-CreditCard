@@ -10,11 +10,11 @@ import java.util.List;
 @Component
 public class AccountDAOJDBCImpl implements AccountDAO{
     private final Logger LOGGER = LogManager.getLogger(AccountDAOJDBCImpl.class);
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
-    public AccountDAOJDBCImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-    }
+//    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+//
+//    public AccountDAOJDBCImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+//        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+//    }
 
     @Override
     public List<Account> findAllAccountOfClient() {
