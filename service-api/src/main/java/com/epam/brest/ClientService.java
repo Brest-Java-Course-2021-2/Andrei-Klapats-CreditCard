@@ -8,7 +8,7 @@ public interface ClientService {
 
     Integer update(Client client);
 
-    Integer delete(Client client);
+    Integer delete(Integer clientId);
 
     Integer count();
 

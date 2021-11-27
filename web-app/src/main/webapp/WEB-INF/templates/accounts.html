@@ -20,18 +20,18 @@
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo.svg"
-                                                  th:src="@{/resources/static/img/logo.svg}"
-                                                  height="32" width="32" alt="HR"></a>
+            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo2.png"
+                                                  th:src="@{/resources/static/img/logo2.png}"
+                                                  height="32" width="32" alt="Credit Account"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="departments.html"
-                           th:href="@{/departments}">Departments</a>
+                        <a class="nav-link active" href="clients.html"
+                           th:href="@{/clients}">Clients</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="employees.html"
-                           th:href="@{/employees}">Employees</a>
+                        <a class="nav-link" href="accounts.html"
+                           th:href="@{/accounts}">Accounts</a>
                     </li>
                 </ul>
             </div>
@@ -40,13 +40,13 @@
     <nav id="main-header"
          class="py-1 mb-3 navbar navbar-light bg-light text-dark">
         <div class="container-fluid">
-            <span class="navbar-brand text-uppercase">Employees</span>
+            <span class="navbar-brand text-uppercase">Accounts</span>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="employee.html"
-                       th:href="@{/employee/add}"
+                    <a href="account.html"
+                       th:href="@{/account/add}"
                        class="btn btn-light"
-                       title="Add employee">
+                       title="Add account">
                         <i class="bi-plus"></i> <span class="d-none d-sm-inline">Add</span>
                     </a>
                 </li>
@@ -55,7 +55,7 @@
     </nav>
 </header>
 
-<section id="employees">
+<section id="accounts">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -63,44 +63,47 @@
                     <table class="table table-striped">
                         <thead class="table-dark">
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Salary</th>
+                            <th>Account's data</th>
+                            <th>Balance</th>
+                            <th>Type of currency</th>
+                            <th>Add's date</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Ivan Ivanov</td>
-                            <td>ivan.ivanov@test.com</td>
+                            <td>BY01QWERTY3014124583883000</td>
                             <td>1000</td>
+                            <td>USD</td>
+                            <td>01-01-2021</td>
                             <td class="text-end">
-                                <a href="employee.html"
-                                   th:href="@{/employee/1}"
+                                <a href="account.html"
+                                   th:href="@{/account/1}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit employee">
+                                   title="Edit account">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete employee"><i class="bi-x"></i><span
+                                       title="delete account"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
                             </td>
                         </tr>
                         <tr>
-                            <td>Alexander Petrov</td>
-                            <td>alex.petrov@test.com</td>
-                            <td>1100</td>
+                            <td>BY02QWERTY3014124583883000</td>
+                            <td>5000</td>
+                            <td>EUR</td>
+                            <td>01-06-2020</td>
                             <td class="text-end">
-                                <a href="employee.html"
-                                   th:href="@{/employee/2}"
+                                <a href="account.html"
+                                   th:href="@{/account/1}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit employee">
+                                   title="Edit account">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete employee"><i class="bi-x"></i><span
+                                       title="delete account"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
@@ -116,7 +119,7 @@
 
 <footer>
     <hr/>
-    <p class="text-center">&copy; 2021</p>
+    <p class="text-center">&copy; Brest 2021</p>
 </footer>
 
 <!-- Confirm delete Modal -->
@@ -125,7 +128,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header alert-danger">
-                <h5 class="modal-title" id="exampleModalLabel">Delete employee</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete account</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

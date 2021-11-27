@@ -8,7 +8,7 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <bean id="clientDtoDao" class="com.epam.brest.ClientDtoDaoJDBC">
+    <bean id="clientDtoDao" class="com.epam.brest.ClientDtoDaoJDBCImpl">
         <constructor-arg ref="namedParameterJdbcTemplate"/>
     </bean>
 

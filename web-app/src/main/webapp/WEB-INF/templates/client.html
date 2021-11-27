@@ -10,7 +10,7 @@
           th:href="@{/resources/static/css/style.css}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>Departments</title>
+    <title>Clients</title>
 </head>
 <body>
 
@@ -20,18 +20,18 @@
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo.svg"
-                                                  th:src="@{/resources/static/img/logo.svg}"
-                                                  height="32" width="32" alt="HR"></a>
+            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo2.png"
+                                                  th:src="@{/resources/static/img/logo2.png}"
+                                                  height="32" width="32" alt="Credit Account"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="departments.html"
-                           th:href="@{/departments}">Departments</a>
+                        <a class="nav-link active" href="clients.html"
+                           th:href="@{/clients}">Clients</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="employees.html"
-                           th:href="@{/employees}">Employees</a>
+                        <a class="nav-link" href="accounts.html"
+                           th:href="@{/accounts}">Accounts</a>
                     </li>
                 </ul>
             </div>
@@ -41,58 +41,68 @@
          class="ps-1 py-1 mb-3 navbar navbar-light bg-light text-dark">
         <ul class="navbar-nav float-start">
             <li class="nav-item" title="Back to list">
-                <a href="departments.html"
-                   th:href="@{/departments}"
+                <a href="clients.html"
+                   th:href="@{/clients}"
                    class="btn btn-light btn-block">
                     <i class="bi-arrow-left"></i></a>
             </li>
         </ul>
         <span class="navbar-brand text-uppercase me-auto"
-              th:text="${isNew} ? 'New department' : 'Edit department'">Edit department</span>
+              th:text="${isNew} ? 'New client' : 'Edit client'">Edit client</span>
     </nav>
 </header>
 
-<section id="department">
+<section id="client">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <form id="departmentForm"
-                              th:object="${department}"
-                              action="departments.html"
+                        <form id="clientForm"
+                              th:object="${client}"
+                              action="client.html"
                               th:action="@{${#httpServletRequest.servletPath}}"
                               th:method="@{post}">
 
-                            <input id="field_departmentId"
+                            <input id="field_clientId"
                                    type="hidden"
-                                   th:field="*{departmentId}"/>
+                                   th:field="*{clientId}"/>
 
                             <div class="mb-3">
                                 <label class="form-label"
-                                       for="field_departmentName">Department Name</label>
+                                       for="field_clientFirstname">Firstname</label>
                                 <input class="form-control "
-                                       id="field_departmentName"
-                                       type="text" value="CEO"
-                                       th:field="*{departmentName}"/>
+                                       id="field_clientFirstname"
+                                       type="text" value="Marilyn"
+                                       th:field="*{clientFirstname}"/>
                             </div>
+
+                            <div class="mb-3">
+                                <label class="form-label"
+                                       for="field_clientLastname">Lastname</label>
+                                <input class="form-control "
+                                       id="field_clientLastname"
+                                       type="text" value="Monro"
+                                       th:field="*{clientLastname}"/>
+                            </div>
+
                             <div class="mb-3">
                                 <label class="form-label"
                                        for="field_description">Description</label>
                                 <input class="form-control"
                                        id="field_description"
-                                       type="text" value="CEO department">
+                                       type="text" value="Marilyn Monroe's account ">
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="departments.html"
-                                   th:href="@{/departments}"
+                                <a href="clients.html"
+                                   th:href="@{/clients}"
                                    class="btn btn-light me-1"
                                    title="Cancel">Cancel</a>
-                                <a href="departments.html"
-                                   th:href="@{/departments}"
-                                   th:onclick="@{document.forms['departmentForm'].submit(); return false;}"
+                                <a href="clients.html"
+                                   th:href="@{/clients}"
+                                   th:onclick="@{document.forms['clientForm'].submit(); return false;}"
                                    class="btn btn-primary"
-                                   title="Save department">Save</a>
+                                   title="Save client">Save</a>
                             </div>
                         </form>
                     </div>

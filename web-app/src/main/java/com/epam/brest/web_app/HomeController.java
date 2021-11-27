@@ -11,6 +11,6 @@ public class HomeController {
 
     @GetMapping(value = "/")
     public String defaultPageRedirect() {
-        return "redirect:departments";
+        return "redirect:clients";
     }
 }

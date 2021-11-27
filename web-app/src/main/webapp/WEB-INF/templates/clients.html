@@ -10,7 +10,7 @@
           th:href="@{/resources/static/css/style.css}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>Departments</title>
+    <title>Clients</title>
 </head>
 <body>
 
@@ -20,18 +20,18 @@
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo.svg"
-                                                  th:src="@{/resources/static/img/logo.svg}"
-                                                  height="32" width="32" alt="HR"></a>
+            <a href="/" class="navbar-brand"><img src="../../resources/static/img/logo2.png"
+                                                  th:src="@{/resources/static/img/logo2.png}"
+                                                  height="32" width="32" alt="Credit Account"></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="departments.html"
-                           th:href="@{/departments}">Departments</a>
+                        <a class="nav-link active" href="clients.html"
+                           th:href="@{/clients}">Clients</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="employees.html"
-                           th:href="@{/employees}">Employees</a>
+                        <a class="nav-link" href="accounts.html"
+                           th:href="@{/accounts}">Accounts</a>
                     </li>
                 </ul>
             </div>
@@ -40,13 +40,13 @@
     <nav id="main-header"
          class="py-1 mb-3 navbar navbar-light bg-light text-dark">
         <div class="container-fluid">
-            <span class="navbar-brand text-uppercase">Departments</span>
+            <span class="navbar-brand text-uppercase">Clients</span>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="department.html"
-                       th:href="@{/department}"
+                    <a href="client.html"
+                       th:href="@{/client}"
                        class="btn btn-light"
-                       title="Add department">
+                       title="Add client">
                         <i class="bi-plus"></i>&nbsp;<span class="d-none d-sm-inline">Add</span>
                     </a>
                 </li>
@@ -55,7 +55,7 @@
     </nav>
 </header>
 
-<section id="departments">
+<section id="clients">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -63,110 +63,117 @@
                     <table class="table table-striped">
                         <thead class="table-dark">
                         <tr>
-                            <th>Title</th>
-                            <th>Avg salary</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Avg balance of account </th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="department : ${departments}">
-                            <td th:text="${department.departmentName}">CEO</td>
-                            <td th:text="${department.avgSalary}">10000</td>
+                        <tr th:each="client : ${clients}">
+                            <td th:text="${client.clientFirstname}">Marilyn</td>
+                            <td th:text="${client.clientLastname}">Monro</td>
+                            <td th:text="${client.avgBalance}">10000</td>
                             <td class="text-end">
-                                <a href="department.html"
-                                   th:href="@{|/department/${department.departmentId}|}"
+                                <a href="client.html"
+                                   th:href="@{|/client/${client.clientId}|}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit department">
+                                   title="Edit client">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog"
-                                      th:attr="data-id=${department.departmentId},data-name=${department.departmentName}">
+                                      th:attr="data-id=${client.clientId},data-name=${client.clientLastname}">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete department"><i class="bi-x"></i><span
+                                       title="delete client"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
                             </td>
                         </tr>
                         <tr th:remove="all">
-                            <td>&nbsp;&nbsp;Accounting</td>
+                            <td>Abraham</td>
+                            <td>Lincoln</td>
                             <td>2500</td>
                             <td class="text-end">
-                                <a href="department.html"
-                                   th:href="@{/department/2}"
+                                <a href="client.html"
+                                   th:href="@{/client/2}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit department">
+                                   title="Edit client">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete department"><i class="bi-x"></i><span
+                                       title="delete client"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
                             </td>
                         </tr>
                         <tr th:remove="all">
-                            <td>&nbsp;&nbsp;Development</td>
-                            <td>1150</td>
+                            <td>Nelson</td>
+                            <td>Mandela</td>
+                            <td>3000</td>
                             <td class="text-end">
-                                <a href="department.html"
-                                   th:href="@{/department/3}"
+                                <a href="client.html"
+                                   th:href="@{/client/3}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit department">
+                                   title="Edit client">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete department"><i class="bi-x"></i><span
+                                       title="delete client"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
                             </td>
                         </tr>
                         <tr th:remove="all">
-                            <td>&nbsp;&nbsp;&nbsp;&nbsp;Java</td>
-                            <td>1500</td>
+                            <td>John</td>
+                            <td>Kennedy </td>
+                            <td>4000</td>
                             <td class="text-end">
-                                <a href="department.html"
-                                   th:href="@{/department/4}"
+                                <a href="client.html"
+                                   th:href="@{/client/4}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit department">
+                                   title="Edit client">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete department"><i class="bi-x"></i><span
+                                       title="delete client"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
                             </td>
                         </tr>
                         <tr th:remove="all">
-                            <td>&nbsp;&nbsp;&nbsp;&nbsp;Testing</td>
-                            <td>1100</td>
+                            <td>Winston</td>
+                            <td>Churchill</td>
+                            <td>5000</td>
                             <td class="text-end">
-                                <a href="department.html"
-                                   th:href="@{/department/5}"
+                                <a href="client.html"
+                                   th:href="@{/client/5}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit department">
+                                   title="Edit client">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete department"><i class="bi-x"></i><span
+                                       title="delete client"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
                             </td>
                         </tr>
                         <tr th:remove="all">
-                            <td>&nbsp;&nbsp;People management</td>
-                            <td>800</td>
+                            <td>Donald</td>
+                            <td>Trump</td>
+                            <td>10000</td>
                             <td class="text-end">
-                                <a href="department.html"
-                                   th:href="@{/department/6}"
+                                <a href="client.html"
+                                   th:href="@{/client/6}"
                                    class="btn-sm btn-outline-secondary"
-                                   title="Edit department">
+                                   title="Edit client">
                                     <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
                                 <span data-bs-toggle="modal" data-bs-target="#deleteDialog">
                                     <a href="#" class="btn-sm btn-outline-secondary"
-                                       title="delete department"><i class="bi-x"></i><span
+                                       title="delete client"><i class="bi-x"></i><span
                                             class="d-none d-md-inline">&nbsp;Delete</span>
                                     </a>
                                 </span>
@@ -182,7 +189,7 @@
 
 <footer>
     <hr/>
-    <p class="text-center">&copy; 2021</p>
+    <p class="text-center">&copy; Brest 2021</p>
 </footer>
 
 <!-- Confirm delete Modal -->

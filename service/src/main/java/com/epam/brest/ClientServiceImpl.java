@@ -34,7 +34,7 @@ public class ClientServiceImpl implements ClientService{
     }
 
     @Override
-    public Integer delete(Client client) {
+    public Integer delete(Integer clientId) {
         return null;
     }
 
