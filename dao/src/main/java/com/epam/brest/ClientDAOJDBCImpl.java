@@ -20,9 +20,8 @@ import java.util.List;
 public class ClientDAOJDBCImpl implements ClientDAO {
     private final Logger LOGGER = LogManager.getLogger(ClientDAOJDBCImpl.class);
 
-
-
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
     @Value("${SQL_CLIENT_COUNT")
     public String sqlClientCount;
 
@@ -74,9 +73,9 @@ public class ClientDAOJDBCImpl implements ClientDAO {
         }
 //TO DO: add parameters (firstname and passport number)
         SqlParameterSource sqlParameterSource =
-                new MapSqlParameterSource("lastname",client.getLastName())
-                        .addValue("firstname",client.getFirstName())
-                        .addValue("passport",client.getPassportNumber());
+                new MapSqlParameterSource("lastname", client.getLastName())
+                        .addValue("firstname", client.getFirstName())
+                        .addValue("passport", client.getPassportNumber());
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sqlCreateDClient, sqlParameterSource, keyHolder);
         return (Integer) keyHolder.getKey();
@@ -93,7 +92,7 @@ public class ClientDAOJDBCImpl implements ClientDAO {
 
         LOGGER.debug("Update client: {}", client);
         SqlParameterSource sqlParameterSource =
-                new MapSqlParameterSource("passport",client.getPassportNumber())
+                new MapSqlParameterSource("passport", client.getPassportNumber())
                         .addValue("clientId", client.getClientId());
         return namedParameterJdbcTemplate.update(sqlUpdateClientPassport, sqlParameterSource);
     }

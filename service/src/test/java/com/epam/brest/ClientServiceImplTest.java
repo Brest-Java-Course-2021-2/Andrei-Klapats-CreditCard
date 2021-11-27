@@ -29,23 +29,23 @@ public class ClientServiceImplTest {
 
     @Test
     void shouldCount() {
-//
-//        assertNotNull(clientService);
-//        Integer quantity = clientService.count();
-//        assertNotNull(quantity);
-//        assertTrue(quantity > 0);
-//        assertEquals(Integer.valueOf(3), quantity);
+
+        assertNotNull(clientService);
+        Integer quantity = clientService.count();
+        assertNotNull(quantity);
+        assertTrue(quantity > 0);
+        assertEquals(Integer.valueOf(3), quantity);
     }
 
     @Test
     void create() {
-//        assertNotNull(clientService);
-//        Integer departmentsSizeBefore = clientService.count();
-//        assertNotNull(departmentsSizeBefore);
-//        Client client = new Client("Aleksandr","Aleksandrov","HB2345678");
-//        Integer newClientId = clientService.create(client);
-//        assertNotNull(newClientId);
-//        assertEquals(departmentsSizeBefore, clientService.count() - 1);
+        assertNotNull(clientService);
+        Integer clientsSizeBefore = clientService.count();
+        assertNotNull(clientsSizeBefore);
+        Client client = new Client("Aleksandr","Aleksandrov","HB2345678");
+        Integer newClientId = clientService.create(client);
+        assertNotNull(newClientId);
+        assertEquals(clientsSizeBefore, clientService.count() - 1);
     }
 
     @Test
