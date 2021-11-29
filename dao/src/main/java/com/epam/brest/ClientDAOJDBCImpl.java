@@ -22,7 +22,7 @@ public class ClientDAOJDBCImpl implements ClientDAO {
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    @Value("${SQL_CLIENT_COUNT")
+    @Value("${SQL_CLIENT_COUNT}")
     public String sqlClientCount;
 
     @Value("${SQL_ALL_CLIENTS}")
@@ -37,7 +37,7 @@ public class ClientDAOJDBCImpl implements ClientDAO {
     @Value("${SQL_CREATE_CLIENT}")
     private String sqlCreateDClient;
 
-    @Value("${SQL_UPDATE_CLIENT_PASSPORT=")
+    @Value("${SQL_UPDATE_CLIENT_PASSPORT}")
     private String sqlUpdateClientPassport;
 
     @Value("${SQL_DELETE_CLIENT_BY_ID}")
