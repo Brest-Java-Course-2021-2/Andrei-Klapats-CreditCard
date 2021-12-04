@@ -1,6 +1,8 @@
-package com.epam.brest;
+package com.epam.brest.dao;
 
 
+import com.epam.brest.Client;
+import com.epam.brest.ClientDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,7 +37,7 @@ public class ClientDAOJDBCImpl implements ClientDAO {
     private String sqlCheckUniqueClientPassport;
 
     @Value("${SQL_CREATE_CLIENT}")
-    private String sqlCreateDClient;
+    private String sqlCreateClient;
 
     @Value("${SQL_UPDATE_CLIENT_PASSPORT}")
     private String sqlUpdateClientPassport;
@@ -71,13 +73,13 @@ public class ClientDAOJDBCImpl implements ClientDAO {
             LOGGER.warn("Client with the same passport number {} already exists.", client.getPassportNumber());
             throw new IllegalArgumentException("Client with the same passport already exists in DB.");
         }
-//TO DO: add parameters (firstname and passport number)
+
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("lastname", client.getLastName())
                         .addValue("firstname", client.getFirstName())
                         .addValue("passport", client.getPassportNumber());
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        namedParameterJdbcTemplate.update(sqlCreateDClient, sqlParameterSource, keyHolder);
+        namedParameterJdbcTemplate.update(sqlCreateClient, sqlParameterSource, keyHolder);
         return (Integer) keyHolder.getKey();
     }
 

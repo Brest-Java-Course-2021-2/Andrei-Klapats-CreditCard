@@ -8,16 +8,11 @@ public class ClientDto {
     private String firstName;
     private String lastName;
     private String passportNumber;
-    private BigDecimal accountBalance;
+    private BigDecimal avgBalance;
 
 
     public ClientDto() {
 
-    }
-
-
-    public ClientDto(String passportNumber) {
-        this.passportNumber = passportNumber;
     }
 
     public Integer getClientId() {
@@ -52,23 +47,11 @@ public class ClientDto {
         this.passportNumber = passportNumber;
     }
 
-    public BigDecimal getAccountBalance() {
-        return accountBalance;
+    public BigDecimal getAvgBalance() {
+        return avgBalance;
     }
 
-    public void setAccountBalance(BigDecimal accountBalance) {
-        this.accountBalance = accountBalance;
-    }
-
-
-    @Override
-    public String toString() {
-        return "ClientDto{" +
-                "clientId=" + clientId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", passportNumber='" + passportNumber + '\'' +
-                ", accountBalance=" + accountBalance +
-                '}';
+    public void setAvgBalance(BigDecimal avgBalance) {
+        this.avgBalance = avgBalance;
     }
 }

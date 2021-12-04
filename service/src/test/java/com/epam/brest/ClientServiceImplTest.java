@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ContextConfiguration(locations = {"classpath*:test-db.xml", "classpath*:service-context-test.xml"})
 @Transactional
 public class ClientServiceImplTest {
+
     @Autowired
     ClientService clientService;
 
@@ -31,30 +32,30 @@ public class ClientServiceImplTest {
     void shouldCount() {
       assertNotNull(clientService);
         Integer quantity = clientService.count();
-//        assertNotNull(quantity);
-//        assertTrue(quantity > 0);
-//        assertEquals(Integer.valueOf(3), quantity);
+        assertNotNull(quantity);
+        assertTrue(quantity > 0);
+        assertEquals(Integer.valueOf(3), quantity);
     }
 
     @Test
     void create() {
-//        assertNotNull(clientService);
-//        Integer clientsSizeBefore = clientService.count();
-//        assertNotNull(clientsSizeBefore);
-//        Client client = new Client("Aleksandr","Aleksandrov","HB2345678");
-//        Integer newClientId = clientService.create(client);
-//        assertNotNull(newClientId);
-//        assertEquals(clientsSizeBefore, clientService.count() - 1);
+        assertNotNull(clientService);
+        Integer clientSizeBefore = clientService.count();
+        assertNotNull(clientSizeBefore);
+        Client client = new Client("Ivan","ivanov","HB1234567");
+        Integer newClientId = clientService.create(client);
+        assertNotNull(newClientId);
+        assertEquals(clientSizeBefore, clientService.count() - 1);
     }
 
     @Test
     void tryToCreateEqualsClient() {
-//        assertNotNull(clientService);
-//        Client client = new Client("Aleksandr","Aleksandrov","HB2345678");
-//
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            clientService.create(client);
-//            clientService.create(client);
-//        });
+        assertNotNull(clientService);
+        Client client = new Client("Aleksandr","Aleksandrov","HB2345678");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            clientService.create(client);
+            clientService.create(client);
+        });
    }
 }

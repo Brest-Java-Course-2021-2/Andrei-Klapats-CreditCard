@@ -1,14 +1,15 @@
-package com.epam.brest;
+package com.epam.brest.dao;
 
+import com.epam.brest.Account;
+import com.epam.brest.AccountDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class AccountDAOJDBCImpl implements AccountDAO{
+public class AccountDAOJDBCImpl implements AccountDAO {
     private final Logger LOGGER = LogManager.getLogger(AccountDAOJDBCImpl.class);
 //    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 //

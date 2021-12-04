@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ClientServiceImpl implements ClientService{
+public class ClientServiceImpl implements ClientService {
 
     private final Logger logger = LogManager.getLogger(ClientServiceImpl.class);
 
-   private final ClientDAO clientDAO;
+    private final ClientDAO clientDAO;
 
     public ClientServiceImpl(ClientDAO clientDAO) {
         this.clientDAO = clientDAO;
@@ -25,17 +25,21 @@ public class ClientServiceImpl implements ClientService{
     @Override
     @Transactional
     public Integer create(Client client) {
-        return null;
+        logger.debug("create({})", client);
+
+        return this.clientDAO.create(client);
     }
 
     @Override
     public Integer update(Client client) {
-        return null;
+        logger.debug("update({})", client);
+        return this.clientDAO.update(client);
     }
 
     @Override
     public Integer delete(Integer clientId) {
-        return null;
+        logger.debug("delete client with id = {}", clientId);
+        return this.clientDAO.delete(clientId);
     }
 
     @Override

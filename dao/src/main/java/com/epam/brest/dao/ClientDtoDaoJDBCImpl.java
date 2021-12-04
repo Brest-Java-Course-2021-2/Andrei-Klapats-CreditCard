@@ -1,5 +1,6 @@
-package com.epam.brest;
+package com.epam.brest.dao;
 
+import com.epam.brest.ClientDtoDAO;
 import com.epam.brest.dto.ClientDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ClientDtoDaoJDBCImpl implements ClientDtoDAO{
+public class ClientDtoDaoJDBCImpl implements ClientDtoDAO {
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Value("${findAllWithAvgSumOfBalanceSql}")
