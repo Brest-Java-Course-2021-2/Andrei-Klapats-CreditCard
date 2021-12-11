@@ -5,7 +5,10 @@ import com.epam.brest.Client;
 import com.epam.brest.ClientDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -22,7 +25,8 @@ import java.util.List;
 public class ClientDAOJDBCImpl implements ClientDAO {
     private final Logger LOGGER = LogManager.getLogger(ClientDAOJDBCImpl.class);
 
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Value("${SQL_CLIENT_COUNT}")
     public String sqlClientCount;
@@ -60,7 +64,7 @@ public class ClientDAOJDBCImpl implements ClientDAO {
     public Client getClientById(Integer clientId) {
         LOGGER.debug("Get client by id = {}", clientId);
         SqlParameterSource sqlParameterSource =
-                new MapSqlParameterSource("clientId", clientId);
+                new MapSqlParameterSource("client_Id", clientId);
         return namedParameterJdbcTemplate.queryForObject(sqlGetClientById, sqlParameterSource, new ClientRowMapper());
     }
 
@@ -92,17 +96,17 @@ public class ClientDAOJDBCImpl implements ClientDAO {
     @Override
     public Integer update(Client client) {
 
-        LOGGER.debug("Update client: {}", client);
+        LOGGER.debug("Update client passport: {}", client);
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("passport", client.getPassportNumber())
-                        .addValue("clientId", client.getClientId());
+                        .addValue("client_Id", client.getClientId());
         return namedParameterJdbcTemplate.update(sqlUpdateClientPassport, sqlParameterSource);
     }
 
     @Override
     public Integer delete(Integer clientId) {
         SqlParameterSource sqlParameterSource =
-                new MapSqlParameterSource("clientId", clientId);
+                new MapSqlParameterSource("client_Id", clientId);
         return namedParameterJdbcTemplate.update(sqlDeleteClientById, sqlParameterSource);
     }
 
@@ -115,7 +119,7 @@ public class ClientDAOJDBCImpl implements ClientDAO {
     }
 
 
-    private class ClientRowMapper implements RowMapper<Client> {
+    private static class ClientRowMapper implements RowMapper<Client> {
 
         @Override
         public Client mapRow(ResultSet resultSet, int i) throws SQLException {

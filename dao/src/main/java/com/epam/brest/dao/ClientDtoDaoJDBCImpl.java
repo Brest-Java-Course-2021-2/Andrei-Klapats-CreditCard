@@ -16,7 +16,7 @@ public class ClientDtoDaoJDBCImpl implements ClientDtoDAO {
     @Value("${findAllWithAvgSumOfBalanceSql}")
     private String findAllWithAvgSumOfBalanceSql;
 
-    public ClientDtoDaoJDBCImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+    public ClientDtoDaoJDBCImpl(final NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
