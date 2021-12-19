@@ -1,9 +1,9 @@
 package com.epam.brest.web_app;
 
-import com.epam.brest.Client;
-import com.epam.brest.ClientDtoService;
 
-import com.epam.brest.ClientService;
+import com.epam.brest.model.Client;
+import com.epam.brest.service.ClientDtoService;
+import com.epam.brest.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class ClientController {
      */
     @GetMapping(value = "/clients")
     public final String clients(Model model) {
-        model.addAttribute("clients", clientDtoService.findAllWithAvgSBalance());
+        model.addAttribute("clients", clientDtoService.findAllWithAvgBalance());
         return "clients";
     }
 
