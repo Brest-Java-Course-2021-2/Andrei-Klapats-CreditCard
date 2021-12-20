@@ -1,6 +1,8 @@
 package com.epam.brest.dao;
 
 
+import com.epam.brest.model.Account;
+import com.epam.brest.model.Client;
 import com.epam.brest.testdb.SpringJdbcConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +16,11 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJdbcTest
@@ -40,5 +47,19 @@ public class AccountDaoJDBSImplIT {
         logger.debug("Execute test: findAll()");
         assertNotNull(accountDaoJDBS);
         assertNotNull(accountDaoJDBS.findAll());
+    }
+
+    @Test
+    void getAccountByClientId() {
+        List<Account> accountList = accountDaoJDBS.findAll();
+//        if(accountList.size()==0){
+//
+//        }
+
+
+//        Account accountSrc = new Account(1, "BY01QWERTY3014124583883000", new BigDecimal(1000), new Date(),1);
+        Account accountSrc = accountList.get(0);
+        Account accountDst = accountDaoJDBS.getAccountByClientId(accountSrc.getClientID());
+        assertEquals(accountSrc.getClientID(),accountDst.getClientID());
     }
 }
