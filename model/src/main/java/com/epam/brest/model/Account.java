@@ -1,19 +1,20 @@
 package com.epam.brest.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Account {
 
     private Integer accountId;
     private String accountData;
-    private Integer accountBalance;
+    private BigDecimal accountBalance;
     private Date dateOfCreate;
     private Integer clientID;
 
     public Account() {
     }
 
-    public Account(Integer accountId, String accountData, Integer accountBalance, Date dateOfCreate, Integer clientID) {
+    public Account(Integer accountId, String accountData, BigDecimal accountBalance, Date dateOfCreate, Integer clientID) {
         this.accountId = accountId;
         this.accountData = accountData;
         this.accountBalance = accountBalance;
@@ -30,11 +31,11 @@ public class Account {
     }
 
 
-    public Integer getAccountBalance() {
+    public BigDecimal getAccountBalance() {
         return accountBalance;
     }
 
-    public void setAccountBalance(Integer accountBalance) {
+    public void setAccountBalance(BigDecimal accountBalance) {
         this.accountBalance = accountBalance;
     }
 

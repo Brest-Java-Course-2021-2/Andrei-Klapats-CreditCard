@@ -13,8 +13,9 @@ CREATE TABLE client
 
 CREATE TABLE account (
     accountId int NOT NULL auto_increment,
-    accountData varchar(255) NOT NULL,
-    accountBalance int NOT NULL,
+    info varchar(255) NOT NULL,
+    balance int NOT NULL,
+    date_of_create date NOT NULL,
     clientId int NOT NULL,
         CONSTRAINT account_pk PRIMARY KEY (accountId),
         CONSTRAINT account_client_fk FOREIGN KEY (clientId) REFERENCES client(clientId)
