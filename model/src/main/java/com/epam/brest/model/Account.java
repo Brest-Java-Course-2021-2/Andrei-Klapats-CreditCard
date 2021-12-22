@@ -9,20 +9,21 @@ public class Account {
     private String accountData;
     private BigDecimal accountBalance;
     private Date dateOfCreate;
-    private Integer clientID;
+    private Integer clientId;
 
     public Account() {
     }
 
-    public Account(Integer accountId, String accountData, BigDecimal accountBalance, Date dateOfCreate, Integer clientID) {
+    public Account(Integer accountId, String accountData, BigDecimal accountBalance, Date dateOfCreate, Integer clientId) {
         this.accountId = accountId;
         this.accountData = accountData;
         this.accountBalance = accountBalance;
         this.dateOfCreate = dateOfCreate;
-        this.clientID = clientID;
+        this.clientId = clientId;
     }
 
     public Integer getAccountId() {
+
         return accountId;
     }
 
@@ -47,12 +48,12 @@ public class Account {
         this.accountData = accountData;
     }
 
-    public Integer getClientID() {
-        return clientID;
+    public Integer getClientId() {
+        return clientId;
     }
 
-    public void setClientID(Integer clientID) {
-        this.clientID = clientID;
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
     }
 
     public Date getDateOfCreate() { return dateOfCreate;}
@@ -67,7 +68,7 @@ public class Account {
                 ", accountData='" + accountData + '\'' +
                 ", accountBalance=" + accountBalance +
                 ", dateOfCreate=" + dateOfCreate +
-                ", clientID=" + clientID +
+                ", clientID=" + clientId +
                 '}';
     }
 }

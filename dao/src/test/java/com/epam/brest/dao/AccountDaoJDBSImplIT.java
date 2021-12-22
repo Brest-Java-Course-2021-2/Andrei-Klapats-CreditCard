@@ -2,7 +2,6 @@ package com.epam.brest.dao;
 
 
 import com.epam.brest.model.Account;
-import com.epam.brest.model.Client;
 import com.epam.brest.testdb.SpringJdbcConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -59,7 +58,37 @@ public class AccountDaoJDBSImplIT {
 
 //        Account accountSrc = new Account(1, "BY01QWERTY3014124583883000", new BigDecimal(1000), new Date(),1);
         Account accountSrc = accountList.get(0);
-        Account accountDst = accountDaoJDBS.getAccountByClientId(accountSrc.getClientID());
-        assertEquals(accountSrc.getClientID(),accountDst.getClientID());
+        Account accountDst = accountDaoJDBS.getAccountByClientId(accountSrc.getClientId());
+        assertEquals(accountSrc.getClientId(),accountDst.getClientId());
+    }
+
+
+    @Test
+    void getAccountById(){
+        List<Account> accountList = accountDaoJDBS.findAll();
+
+
+        Account accountSrc = accountList.get(0);
+        Account accountDst = accountDaoJDBS.getAccountByAccountId(accountSrc.getAccountId());
+        assertEquals(accountSrc.getAccountId(),accountDst.getAccountId());
+    }
+
+    @Test
+    void getAccountByDateOfCreate(){
+        List<Account> accountList = accountDaoJDBS.findAll();
+        Account accountSrc = accountList.get(0);
+        Account accountDst = accountDaoJDBS.getAccountByDateOfCreate(accountSrc.getDateOfCreate());
+        assertEquals(accountSrc.getDateOfCreate(),accountDst.getDateOfCreate());
+    }
+
+    @Test
+    void createAccount(){
+        assertNotNull(accountDaoJDBS);
+        int accountSizeBefore = accountDaoJDBS.count();
+        Account account = new Account((int)Math.random()*10, "BY00QWERTY3014124583883000", new BigDecimal(1000),
+                new Date(),2);
+        Integer newAccountId = accountDaoJDBS.create(account);
+        assertNotNull(newAccountId);
+        assertEquals((int) accountSizeBefore, accountDaoJDBS.count() - 1);
     }
 }
