@@ -23,7 +23,7 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.epam.brest.model.constants.ClientConstants.CLIENT_PASSPORT_SIZE;
+import static com.epam.brest.model.constants.ClientConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -81,8 +81,8 @@ public class ClientServiceRestTest {
         LOGGER.debug("shouldCreateClient()");
         // given
         Client client = new Client()
-                .setFirstName(RandomStringUtils.randomAlphabetic(CLIENT_PASSPORT_SIZE)) // change constant
-                .setLastname(RandomStringUtils.randomAlphabetic(CLIENT_PASSPORT_SIZE))//change constant
+                .setFirstName(RandomStringUtils.randomAlphabetic(CLIENT_FIRSTNAME_SIZE)) // change constant
+                .setLastname(RandomStringUtils.randomAlphabetic(CLIENT_LASTNAME_SIZE))//change constant
                 .setPassport(RandomStringUtils.randomAlphabetic(CLIENT_PASSPORT_SIZE));
 
         mockServer.expect(ExpectedCount.once(), requestTo(new URI(CLIENTS_URL)))

@@ -52,7 +52,7 @@ class ClientServiceImplIT {
     }
 
     @Test
-    void tryToCreateEqualsDepartments() {
+    void tryToCreateEqualsClients() {
         assertNotNull(clientService);
         Client client = new Client("AB0010203","Ivan","Petrov");
 

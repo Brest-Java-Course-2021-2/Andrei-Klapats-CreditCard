@@ -1,11 +1,10 @@
 package com.epam.brest.service.config;
 
-import com.epam.brest.dao.ClientDao;
-import com.epam.brest.dao.ClientDaoJDBCImpl;
-import com.epam.brest.dao.ClientDtoDao;
-import com.epam.brest.dao.ClientDtoDaoJdbc;
+import com.epam.brest.dao.*;
+import com.epam.brest.service.AccountService;
 import com.epam.brest.service.ClientDtoService;
 import com.epam.brest.service.ClientService;
+import com.epam.brest.service.impl.AccountServiceImpl;
 import com.epam.brest.service.impl.ClientDtoServiceImpl;
 import com.epam.brest.service.impl.ClientServiceImpl;
 import com.epam.brest.testdb.SpringJdbcConfig;
@@ -34,4 +33,10 @@ public class ServiceTestConfig extends SpringJdbcConfig {
     ClientService clientService() {
         return new ClientServiceImpl(clientDao());
     }
+
+    @Bean
+    AccountDao accountDao() {return new AccountDaoJDBSImpl(namedParameterJdbcTemplate()); }
+
+    @Bean
+    AccountService accountService(){return  new AccountServiceImpl(accountDao());}
 }
