@@ -2,6 +2,7 @@ package com.epam.brest.dao;
 
 
 import com.epam.brest.model.Account;
+import com.epam.brest.model.Client;
 import com.epam.brest.testdb.SpringJdbcConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -90,5 +91,32 @@ public class AccountDaoJDBSImplIT {
         Integer newAccountId = accountDaoJDBS.create(account);
         assertNotNull(newAccountId);
         assertEquals((int) accountSizeBefore, accountDaoJDBS.count() - 1);
+    }
+
+    @Test
+    void updateBalance() {
+        List<Account> account = accountDaoJDBS.findAll();
+        if (account.size() == 0) {
+            accountDaoJDBS.create(new Account((int)Math.random()*10, "BY00QWERTY3014124583883000", new BigDecimal(1000),
+                    new Date(),2));
+            account = accountDaoJDBS.findAll();
+        }
+
+        Account accountSrc = account.get(0);
+        accountSrc.setAccountBalance(accountSrc.getAccountBalance().add(BigDecimal.valueOf(15.15)));
+
+        accountDaoJDBS.updateAccountBalance(accountSrc);
+
+        Account accountDst = accountDaoJDBS.getAccountByClientId(accountSrc.getClientId());
+        assertEquals(accountSrc.getAccountBalance(), accountDst.getAccountBalance());
+    }
+    @Test
+    void deleteAccount() {
+        accountDaoJDBS.create(new Account((int)Math.random()*10, "BY00QWERTY3014124583883000", new BigDecimal(1000),
+                new Date(),2));
+        List<Account> account = accountDaoJDBS.findAll();
+
+        accountDaoJDBS.delete(account.get(account.size() - 1).getClientId());
+        assertEquals(account.size() - 1, accountDaoJDBS.findAll().size());
     }
 }

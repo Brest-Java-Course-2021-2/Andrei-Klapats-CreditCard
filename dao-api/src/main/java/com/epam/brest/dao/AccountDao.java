@@ -16,7 +16,7 @@ public interface AccountDao {
 
     Integer create(Account account);
 
-    Integer update(Account account);
+    Integer updateAccountBalance(Account account);
 
     Integer delete(Integer accountId);
 

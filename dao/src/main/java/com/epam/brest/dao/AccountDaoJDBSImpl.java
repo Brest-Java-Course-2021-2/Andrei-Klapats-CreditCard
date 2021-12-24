@@ -45,7 +45,10 @@ public class AccountDaoJDBSImpl implements AccountDao {
     private String sqlCheckUniqueAccount;
     @Value("${SQL_ACCOUNT_COUNT}")
     public String sqlAccountCount;
-
+    @Value("${SQL_UPDATE_BALANCE_OF_ACCOUNT}")
+    public String sqlUpdateClientPassport;
+    @Value("${SQL_DELETE_ACCOUNT_BY_ID}")
+    private String sqlDeleteAccountById;
     @Override
     public List<Account> findAll() {
         logger.debug("Start: findAll()");
@@ -54,31 +57,31 @@ public class AccountDaoJDBSImpl implements AccountDao {
 
     @Override
     public Account getAccountByClientId(Integer clientId) {
-        logger.debug(" Get account by Client Id = {}",clientId);
+        logger.debug(" Get account by Client Id = {}", clientId);
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("clientId", clientId);
 
 
         //TO DO: fix problem when are return more than 1 object
 
-        return namedParameterJdbcTemplate.queryForObject(sqlGetAccountByClientId,sqlParameterSource,new AccountRowMapper());
+        return namedParameterJdbcTemplate.queryForObject(sqlGetAccountByClientId, sqlParameterSource, new AccountRowMapper());
     }
 
     @Override
     public Account getAccountByAccountId(Integer accountId) {
-        logger.debug(" Get account by Account Id = {}",accountId);
+        logger.debug(" Get account by Account Id = {}", accountId);
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("accountId", accountId);
 
-        return namedParameterJdbcTemplate.queryForObject(sqlGetAccountById,sqlParameterSource,new AccountRowMapper());
+        return namedParameterJdbcTemplate.queryForObject(sqlGetAccountById, sqlParameterSource, new AccountRowMapper());
     }
 
     @Override
     public Account getAccountByDateOfCreate(Date dateOfCreate) {
-        logger.debug(" Get date of create = {}",dateOfCreate);
+        logger.debug(" Get date of create = {}", dateOfCreate);
         SqlParameterSource sqlParameterSource =
                 new MapSqlParameterSource("dateOfCreate", dateOfCreate);
-        return namedParameterJdbcTemplate.queryForObject(sqlGetAccountByDateOfCreate,sqlParameterSource,new AccountRowMapper());
+        return namedParameterJdbcTemplate.queryForObject(sqlGetAccountByDateOfCreate, sqlParameterSource, new AccountRowMapper());
     }
 
     @Override
@@ -93,12 +96,13 @@ public class AccountDaoJDBSImpl implements AccountDao {
                 new MapSqlParameterSource("accountId", account.getAccountId())
                         .addValue("accountData", account.getAccountData())
                         .addValue("accountBalance", account.getAccountBalance())
-                        .addValue("dateOfCreate",account.getDateOfCreate())
-                        .addValue("clientId",account.getClientId());
+                        .addValue("dateOfCreate", account.getDateOfCreate())
+                        .addValue("clientId", account.getClientId());
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sqlCreateAccount, sqlParameterSource, keyHolder);
         return (Integer) keyHolder.getKey();
     }
+
     private boolean ifAccountUnique(String accountData) {
         logger.debug("Check Client passport: {} on unique", accountData);
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource("accountData", accountData);
@@ -106,13 +110,19 @@ public class AccountDaoJDBSImpl implements AccountDao {
     }
 
     @Override
-    public Integer update(Account account) {
-        return null;
+    public Integer updateAccountBalance(Account account) {
+        logger.debug("Update balance of account: {}", account);
+        SqlParameterSource sqlParameterSource =
+                new MapSqlParameterSource("accountBalance", account.getAccountBalance())
+                        .addValue("clientId", account.getClientId());
+        return namedParameterJdbcTemplate.update(sqlUpdateClientPassport, sqlParameterSource);
     }
 
     @Override
     public Integer delete(Integer accountId) {
-        return null;
+        SqlParameterSource sqlParameterSource =
+                new MapSqlParameterSource("accountId", accountId);
+        return namedParameterJdbcTemplate.update(sqlDeleteAccountById, sqlParameterSource);
     }
 
     @Override
